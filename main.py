@@ -131,7 +131,7 @@ def print_tree(name):
         x = np.linspace(float(s1[0]), float(s2[0]), 2)
         y = np.linspace(float(s1[1]), float(s2[1]), 2)
         z = np.linspace(float(s1[2]), float(s2[2]), 2)
-        ax.plot(x, y, z, "b");
+        ax.plot(x, y, z, "b")
 
     plt.show()
 
