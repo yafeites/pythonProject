@@ -100,7 +100,7 @@ def printOct(halfLength, point, vector, ax):
                 y = np.linspace(float(pointA[i][1]), float(pointA[j][1]), 2)
                 z = np.linspace(float(pointA[i][2]), float(pointA[j][2]), 2)
                 # print(x,y,z)
-                ax.plot(x, y, z, 'r')
+                ax.plot(x, y, z, 'black')
 
 
 def print_tree(name):
@@ -112,32 +112,34 @@ def print_tree(name):
     file_obj = open("D:\\file\\" + name + ".txt", encoding='UTF-8')
     halfLengthA = [50, 50, 50]
     halfLengthB = [50, 50, 50]
-    pointA = [1300, 0, 800]
-    pointB = [1890, 0, 65]
+    halfLengthC = [50, 50, 50]
+    pointB = [1300, 0, 800]
+    pointA = [1890, 0, 65]
+    pointC=[1500,100,65]
     vector = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 
     printOct(halfLengthA, pointA, vector, ax)
-    printOct(halfLengthB, pointB, vector, ax)
+    # printOct(halfLengthB, pointB, vector, ax)
+    # printOct(halfLengthC, pointC, vector, ax)
     for line in file_obj.readlines():
         if (line.find("树") != -1):
             continue
         else:
             line = line.rstrip("\n")
             arr1 = line.split(" ")
-        # print(arr1)
         s1 = arr1[0].split(",")
         s2 = arr1[1].split(",")
         # print(s2)
         x = np.linspace(float(s1[0]), float(s2[0]), 2)
         y = np.linspace(float(s1[1]), float(s2[1]), 2)
         z = np.linspace(float(s1[2]), float(s2[2]), 2)
-        ax.plot(x, y, z, "b")
+        ax.plot(x, y, z)
 
     plt.show()
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_tree('2020-12-21-18-39-57tree')
+    print_tree('2020-12-21-22-24-48node')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
