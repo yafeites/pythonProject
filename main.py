@@ -6,6 +6,8 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as  np
+from scipy import interpolate
+import math
 
 
 def printOct(halfLength, point, vector, ax):
@@ -103,30 +105,68 @@ def printOct(halfLength, point, vector, ax):
                 ax.plot(x, y, z, 'black')
 
 
-def print_tree(name):
-    # Use a breakpoint in the code line below to debug your script.
-    # print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def print_Dif_tree(name, name1):
     fig = plt.figure()
     ax = Axes3D(fig)
 
-    file_obj = open("D:\\file\\" + name + ".txt", encoding='UTF-8')
-    halfLengthA = [50, 50, 50]
-    halfLengthB = [50, 50, 50]
-    halfLengthC = [50, 50, 50]
-    pointB = [1300, 0, 800]
-    pointA = [1890, 0, 65]
-    pointC=[1500,100,65]
-    vector = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
+    printObs(ax)
 
-    printOct(halfLengthA, pointA, vector, ax)
-    # printOct(halfLengthB, pointB, vector, ax)
-    # printOct(halfLengthC, pointC, vector, ax)
     for line in file_obj.readlines():
         if (line.find("树") != -1):
             continue
         else:
             line = line.rstrip("\n")
             arr1 = line.split(" ")
+        # print(arr1)
+        s1 = arr1[0].split(",")
+        s2 = arr1[1].split(",")
+        # print(s2)
+        x = np.linspace(float(s1[0]), float(s2[0]), 2)
+        y = np.linspace(float(s1[1]), float(s2[1]), 2)
+        z = np.linspace(float(s1[2]), float(s2[2]), 2)
+        line1, = ax.plot(x, y, z, 'b')
+
+    file_obj = open("E:\\file\\" + name1 + ".txt", encoding='UTF-8')
+
+    for line in file_obj.readlines():
+        if (line.find("树") != -1):
+            continue
+        else:
+            line = line.rstrip("\n")
+            arr1 = line.split(" ")
+        # print(arr1)
+        s1 = arr1[0].split(",")
+        s2 = arr1[1].split(",")
+        # print(s2)
+        x = np.linspace(float(s1[0]), float(s2[0]), 2)
+        y = np.linspace(float(s1[1]), float(s2[1]), 2)
+        z = np.linspace(float(s1[2]), float(s2[2]), 2)
+        line2, = ax.plot(x, y, z, 'r')
+    plt.rcParams['font.sans-serif'] = ['SimHei']  ###解决中文乱码
+    plt.rcParams['axes.unicode_minus'] = False
+    plt.legend(handles=[line1, line2], labels=['rrt', '联合算法'], loc='best')
+    plt.show()
+
+
+
+
+def print_tree(name):
+    # Use a breakpoint in the code line below to debug your script.
+    # print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    fig = plt.figure()
+    ax = Axes3D(fig)
+
+    file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
+    printObs(ax)
+
+    for line in file_obj.readlines():
+        if (line.find("树") != -1):
+            continue
+        else:
+            line = line.rstrip("\n")
+            arr1 = line.split(" ")
+        # print(arr1)
         s1 = arr1[0].split(",")
         s2 = arr1[1].split(",")
         # print(s2)
@@ -138,8 +178,95 @@ def print_tree(name):
     plt.show()
 
 
+
+def fit(name):
+    fig = plt.figure()
+    ax = Axes3D(fig)
+    file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
+    x = []
+    y = []
+    z = []
+    i = 0
+    for line in file_obj.readlines():
+        line = line.rstrip("\n")
+        arr = line.split(",")
+        # print(arr)
+        x.append(float(arr[0]))
+        y.append(float(arr[1]))
+        z.append(float(arr[2]))
+        # i=i+1
+    print(x)
+    print(y)
+    print(z)
+    printObs(ax)
+    # print(np.array(x))
+    tck, u = interpolate.splprep([np.array(x), np.array(y), np.array(z)], k=3)
+    unew = np.arange(0, 1.01, 0.01)
+    out = interpolate.splev(unew, tck)
+    print(out)
+    plt.rcParams['font.sans-serif'] = ['SimHei']  ###解决中文乱码
+    plt.rcParams['axes.unicode_minus'] = False
+    ax.plot(x, y, z, c='red', label='原始曲线')
+    ax.plot(out[0], out[1], out[2], label='三次b样条')
+    plt.legend()
+
+    plt.show()
+
+
+def printObs(ax):
+    halfLengthA = [50, 50, 50]
+    halfLengthB = [50, 50, 50]
+    halfLengthC = [50, 50, 50]
+    pointB = [1300, 0, 800]
+    pointA = [1890, 0, 65]
+    pointC = [1500, 50, 300]
+    pointD = [1500, 0, 65.0]
+    pointE = [1700.0, -50, 65.0]
+    vector = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+
+    printOct(halfLengthA, pointA, vector, ax)
+    printOct(halfLengthB, pointB, vector, ax)
+    printOct(halfLengthC, pointC, vector, ax)
+    printOct(halfLengthC, pointD, vector, ax)
+    printOct(halfLengthC, pointE, vector, ax)
+
+
 # Press the green button in the gutter to run the script.
+def printLength(name):
+    fig = plt.figure()
+    ax = Axes3D(fig)
+    file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
+    printObs(ax)
+    dis = 0
+    for line in file_obj.readlines():
+        if (line.find("树") != -1):
+            continue
+        else:
+            line = line.rstrip("\n")
+            arr1 = line.split(" ")
+        # print(arr1)
+        s1 = arr1[0].split(",")
+        s2 = arr1[1].split(",")
+        dis += math.sqrt(math.pow(float(s1[0]) - float(s2[0]), 2) + math.pow(float(s1[1]) - float(s2[1]), 2) + math.pow(
+            float(s1[2]) - float(s2[2]), 2))
+
+        # # print(s2)
+        # x = np.linspace(float(s1[0]), float(s2[0]), 2)
+        # y = np.linspace(float(s1[1]), float(s2[1]), 2)
+        # z = np.linspace(float(s1[2]), float(s2[2]), 2)
+        # ax.plot(x, y, z)
+    print(dis)
+
+
+
+
 if __name__ == '__main__':
-    print_tree('2020-12-21-22-24-48node')
+    print_tree('五障碍物\\2020-12-24-18-43-03optnode')
+    # printLength('020-12-24-20-05-25optnode')
+
+
+    print_Dif_tree('五障碍物\\2020-12-24-11-34-04rrtoptnode','五障碍物\\2020-12-24-18-43-03optnode')
+
+    # fit('三障碍物\\2020-12-24-12-14-09point')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
