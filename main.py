@@ -214,11 +214,16 @@ def fit(name):
 
 
 def printObs(ax):
-    halfLengthA = [50, 50, 50]
-    halfLengthB = [50, 50, 50]
-    halfLengthC = [50, 50, 50]
-    pointB = [1300, 0, 800]
+    halfLengthA = [150, 150, 150]
+    halfLengthB = [150, 150, 150]
+    halfLengthC = [150, 150,150]
+    # pointB = [1300, 0, 800]
+    # pointA = [1890, 0, 65]
+    # pointC = [1500, 50, 300]
+    # pointD = [1500, 0, 65.0]
+    # pointE = [1700.0, -50, 65.0]
     pointA = [1890, 0, 65]
+    pointB = [1300, 0, 800]
     pointC = [1500, 50, 300]
     pointD = [1500, 0, 65.0]
     pointE = [1700.0, -50, 65.0]
@@ -261,11 +266,11 @@ def printLength(name):
 
 
 if __name__ == '__main__':
-    print_tree('五障碍物\\2020-12-24-18-43-03optnode')
+    print_tree('2020-12-28-18-49-10optnode')
     # printLength('020-12-24-20-05-25optnode')
 
 
-    print_Dif_tree('五障碍物\\2020-12-24-11-34-04rrtoptnode','五障碍物\\2020-12-24-18-43-03optnode')
+    # print_Dif_tree('2020-12-28-18-49-10optnode','五障碍物\\2020-12-24-18-43-03optnode')
 
     # fit('三障碍物\\2020-12-24-12-14-09point')
 
