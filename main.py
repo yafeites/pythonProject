@@ -45,66 +45,83 @@ def printOct(halfLength, point, vector, ax):
     pointA[2][1] += + halfLength[2] * vector[2][1]
     pointA[2][2] += + halfLength[2] * vector[2][2]
 
-    pointA[4][0] += + halfLength[0] * vector[0][0]
-    pointA[4][1] += + halfLength[0] * vector[0][1]
-    pointA[4][2] += + halfLength[0] * vector[0][2]
-    pointA[4][0] += + halfLength[1] * vector[1][0]
-    pointA[4][1] += + halfLength[1] * vector[1][1]
-    pointA[4][2] += + halfLength[1] * vector[1][2]
-    pointA[4][0] += - halfLength[2] * vector[2][0]
-    pointA[4][1] += - halfLength[2] * vector[2][1]
-    pointA[4][2] += - halfLength[2] * vector[2][2]
+    pointA[3][0] += + halfLength[0] * vector[0][0]
+    pointA[3][1] += + halfLength[0] * vector[0][1]
+    pointA[3][2] += + halfLength[0] * vector[0][2]
+    pointA[3][0] += + halfLength[1] * vector[1][0]
+    pointA[3][1] += + halfLength[1] * vector[1][1]
+    pointA[3][2] += + halfLength[1] * vector[1][2]
+    pointA[3][0] += - halfLength[2] * vector[2][0]
+    pointA[3][1] += - halfLength[2] * vector[2][1]
+    pointA[3][2] += - halfLength[2] * vector[2][2]
+
+    pointA[4][0] += - halfLength[0] * vector[0][0]
+    pointA[4][1] += - halfLength[0] * vector[0][1]
+    pointA[4][2] += - halfLength[0] * vector[0][2]
+    pointA[4][0] += - halfLength[1] * vector[1][0]
+    pointA[4][1] += - halfLength[1] * vector[1][1]
+    pointA[4][2] += - halfLength[1] * vector[1][2]
+    pointA[4][0] += + halfLength[2] * vector[2][0]
+    pointA[4][1] += + halfLength[2] * vector[2][1]
+    pointA[4][2] += + halfLength[2] * vector[2][2]
 
     pointA[5][0] += - halfLength[0] * vector[0][0]
     pointA[5][1] += - halfLength[0] * vector[0][1]
     pointA[5][2] += - halfLength[0] * vector[0][2]
-    pointA[5][0] += - halfLength[1] * vector[1][0]
-    pointA[5][1] += - halfLength[1] * vector[1][1]
-    pointA[5][2] += - halfLength[1] * vector[1][2]
-    pointA[5][0] += + halfLength[2] * vector[2][0]
-    pointA[5][1] += + halfLength[2] * vector[2][1]
-    pointA[5][2] += + halfLength[2] * vector[2][2]
+    pointA[5][0] += + halfLength[1] * vector[1][0]
+    pointA[5][1] += + halfLength[1] * vector[1][1]
+    pointA[5][2] += + halfLength[1] * vector[1][2]
+    pointA[5][0] += - halfLength[2] * vector[2][0]
+    pointA[5][1] += - halfLength[2] * vector[2][1]
+    pointA[5][2] += - halfLength[2] * vector[2][2]
 
-    pointA[6][0] += - halfLength[0] * vector[0][0]
-    pointA[6][1] += - halfLength[0] * vector[0][1]
-    pointA[6][2] += - halfLength[0] * vector[0][2]
-    pointA[6][0] += + halfLength[1] * vector[1][0]
-    pointA[6][1] += + halfLength[1] * vector[1][1]
-    pointA[6][2] += + halfLength[1] * vector[1][2]
+    pointA[6][0] += + halfLength[0] * vector[0][0]
+    pointA[6][1] += + halfLength[0] * vector[0][1]
+    pointA[6][2] += + halfLength[0] * vector[0][2]
+    pointA[6][0] += - halfLength[1] * vector[1][0]
+    pointA[6][1] += - halfLength[1] * vector[1][1]
+    pointA[6][2] += - halfLength[1] * vector[1][2]
     pointA[6][0] += - halfLength[2] * vector[2][0]
     pointA[6][1] += - halfLength[2] * vector[2][1]
     pointA[6][2] += - halfLength[2] * vector[2][2]
 
-    pointA[7][0] += + halfLength[0] * vector[0][0]
-    pointA[7][1] += + halfLength[0] * vector[0][1]
-    pointA[7][2] += + halfLength[0] * vector[0][2]
+    pointA[7][0] += - halfLength[0] * vector[0][0]
+    pointA[7][1] += - halfLength[0] * vector[0][1]
+    pointA[7][2] += - halfLength[0] * vector[0][2]
     pointA[7][0] += - halfLength[1] * vector[1][0]
     pointA[7][1] += - halfLength[1] * vector[1][1]
     pointA[7][2] += - halfLength[1] * vector[1][2]
     pointA[7][0] += - halfLength[2] * vector[2][0]
     pointA[7][1] += - halfLength[2] * vector[2][1]
     pointA[7][2] += - halfLength[2] * vector[2][2]
+    print(pointA)
+    # for i in range(0, len(pointA)):
+    #     for j in range(i):
+    #         if (i != j):
+    #             x = np.linspace(float(pointA[i][0]), float(pointA[j][0]), 2)
+    #             y = np.linspace(float(pointA[i][1]), float(pointA[j][1]), 2)
+    #             z = np.linspace(float(pointA[i][2]), float(pointA[j][2]), 2)
+    #             # print(x,y,z)
+    #             ax.plot(x, y, z, 'black')
+    printLine(pointA,0,1,ax)
+    printLine(pointA,4,1,ax)
+    printLine(pointA,4,2,ax)
+    printLine(pointA,0,2,ax)
+    printLine(pointA,5,1,ax)
+    printLine(pointA,4,7,ax)
+    printLine(pointA,2,6,ax)
+    printLine(pointA,0,3,ax)
+    printLine(pointA,5,7,ax)
+    printLine(pointA,5,3,ax)
+    printLine(pointA,7,6,ax)
+    printLine(pointA,6,3,ax)
 
-    pointA[3][0] += - halfLength[0] * vector[0][0]
-    pointA[3][1] += - halfLength[0] * vector[0][1]
-    pointA[3][2] += - halfLength[0] * vector[0][2]
-    pointA[3][0] += - halfLength[1] * vector[1][0]
-    pointA[3][1] += - halfLength[1] * vector[1][1]
-    pointA[3][2] += - halfLength[1] * vector[1][2]
-    pointA[3][0] += - halfLength[2] * vector[2][0]
-    pointA[3][1] += - halfLength[2] * vector[2][1]
-    pointA[3][2] += - halfLength[2] * vector[2][2]
-
-    for i in range(0, len(pointA)):
-        for j in range(i):
-            if (i != j):
-                x = np.linspace(float(pointA[i][0]), float(pointA[j][0]), 2)
-                y = np.linspace(float(pointA[i][1]), float(pointA[j][1]), 2)
-                z = np.linspace(float(pointA[i][2]), float(pointA[j][2]), 2)
-                # print(x,y,z)
-                ax.plot(x, y, z, 'black')
-
-
+def printLine(pointA,i,j,ax):
+            x = np.linspace(float(pointA[i][0]), float(pointA[j][0]), 2)
+            y = np.linspace(float(pointA[i][1]), float(pointA[j][1]), 2)
+            z = np.linspace(float(pointA[i][2]), float(pointA[j][2]), 2)
+             # print(x,y,z)
+            ax.plot(x, y, z, 'black')
 def print_Dif_tree(name, name1):
     fig = plt.figure()
     ax = Axes3D(fig)
@@ -214,9 +231,9 @@ def fit(name):
 
 
 def printObs(ax):
-    halfLengthA = [150, 150, 150]
-    halfLengthB = [150, 150, 150]
-    halfLengthC = [150, 150,150]
+    halfLengthA = [50, 50,50]
+    halfLengthB = [50, 50, 50]
+    halfLengthC = [50, 50,50]
     # pointB = [1300, 0, 800]
     # pointA = [1890, 0, 65]
     # pointC = [1500, 50, 300]
@@ -230,10 +247,10 @@ def printObs(ax):
     vector = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 
     printOct(halfLengthA, pointA, vector, ax)
-    printOct(halfLengthB, pointB, vector, ax)
-    printOct(halfLengthC, pointC, vector, ax)
-    printOct(halfLengthC, pointD, vector, ax)
-    printOct(halfLengthC, pointE, vector, ax)
+    # printOct(halfLengthB, pointB, vector, ax)
+    # printOct(halfLengthC, pointC, vector, ax)
+    # printOct(halfLengthC, pointD, vector, ax)
+    # printOct(halfLengthC, pointE, vector, ax)
 
 
 # Press the green button in the gutter to run the script.
@@ -266,8 +283,8 @@ def printLength(name):
 
 
 if __name__ == '__main__':
-    print_tree('2020-12-28-18-49-10optnode')
-    # printLength('020-12-24-20-05-25optnode')
+    print_tree('2021-01-05-11-54-46optnode')
+    # printLength('2021-01-05-16-00-16node')
 
 
     # print_Dif_tree('2020-12-28-18-49-10optnode','五障碍物\\2020-12-24-18-43-03optnode')
