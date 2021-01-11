@@ -133,7 +133,7 @@ def printObstacle(name):
 
     ax.scatter(x, y, z, s=1)
 
-    plt.xlim(1000, 2500)
+    plt.xlim(700, 3200)
     plt.ylim(-1000, 1000)
 
     plt.show()
@@ -491,7 +491,7 @@ def randomcolor():
 
 if __name__ == '__main__':
     # printDifObstacle('2021-01-07-10-28-55点云分离ground','2021-01-07-10-28-55障碍物')
-    printObstacle("2021-01-07-10-28-55所有点云")
+    printObstacle("2021-01-11-19-22-30地面点云")
     # printObstacleObbByNotZTest("2021-01-07-10-04-36obbA")
 
     # printObstacleObb('2021-01-06-22-11-25点云分离obbE')

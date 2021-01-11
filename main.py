@@ -247,10 +247,10 @@ def printObs(ax):
     vector = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 
     printOct(halfLengthA, pointA, vector, ax)
-    # printOct(halfLengthB, pointB, vector, ax)
-    # printOct(halfLengthC, pointC, vector, ax)
-    # printOct(halfLengthC, pointD, vector, ax)
-    # printOct(halfLengthC, pointE, vector, ax)
+    printOct(halfLengthB, pointB, vector, ax)
+    printOct(halfLengthC, pointC, vector, ax)
+    printOct(halfLengthC, pointD, vector, ax)
+    printOct(halfLengthC, pointE, vector, ax)
 
 
 # Press the green button in the gutter to run the script.
@@ -283,8 +283,8 @@ def printLength(name):
 
 
 if __name__ == '__main__':
-    print_tree('2021-01-05-11-54-46optnode')
-    # printLength('2021-01-05-16-00-16node')
+    print_tree('2021-01-08-18-51-48optnode')
+    printLength('2021-01-08-18-36-29optnode')
 
 
     # print_Dif_tree('2020-12-28-18-49-10optnode','五障碍物\\2020-12-24-18-43-03optnode')
