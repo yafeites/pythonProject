@@ -163,6 +163,8 @@ def print_Dif_tree(name, name1):
     plt.rcParams['font.sans-serif'] = ['SimHei']  ###解决中文乱码
     plt.rcParams['axes.unicode_minus'] = False
     plt.legend(handles=[line1, line2], labels=['rrt', '联合算法'], loc='best')
+    # plt.xlim(700, 3200)
+    # plt.ylim(-1000, 1000)
     plt.show()
 
 
@@ -191,7 +193,8 @@ def print_tree(name):
         y = np.linspace(float(s1[1]), float(s2[1]), 2)
         z = np.linspace(float(s1[2]), float(s2[2]), 2)
         ax.plot(x, y, z)
-
+    # plt.xlim(700, 3200)
+    # plt.ylim(-1000, 1000)
     plt.show()
 
 
@@ -226,7 +229,8 @@ def fit(name):
     ax.plot(x, y, z, c='red', label='原始曲线')
     ax.plot(out[0], out[1], out[2], label='三次b样条')
     plt.legend()
-
+    # plt.xlim(1000, 2500)
+    plt.ylim(-200, 200)
     plt.show()
 
 
@@ -240,25 +244,25 @@ def printObs(ax):
     # pointD = [1500, 0, 65.0]
     # pointE = [1700.0, -50, 65.0]
     pointA = [1890, 0, 65]
-    pointB = [1300, 0, 800]
-    pointC = [1500, 50, 300]
+    pointE = [850, 0, 800]
+    pointB = [1500, 50, 300]
     pointD = [1500, 0, 65.0]
-    pointE = [1700.0, -50, 65.0]
+    pointC = [1700.0, -50, 65.0]
     vector = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 
     printOct(halfLengthA, pointA, vector, ax)
     printOct(halfLengthB, pointB, vector, ax)
     printOct(halfLengthC, pointC, vector, ax)
-    printOct(halfLengthC, pointD, vector, ax)
-    printOct(halfLengthC, pointE, vector, ax)
+    # printOct(halfLengthC, pointD, vector, ax)
+    # printOct(halfLengthC, pointE, vector, ax)
 
 
 # Press the green button in the gutter to run the script.
 def printLength(name):
-    fig = plt.figure()
-    ax = Axes3D(fig)
+    # fig = plt.figure()
+    # ax = Axes3D(fig)
     file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
-    printObs(ax)
+    # printObs(ax)
     dis = 0
     for line in file_obj.readlines():
         if (line.find("树") != -1):
@@ -283,12 +287,13 @@ def printLength(name):
 
 
 if __name__ == '__main__':
-    print_tree('2021-01-08-18-51-48optnode')
-    printLength('2021-01-08-18-36-29optnode')
+    printLength('2021-01-13-09-36-44optnode')
+    print_tree('2021-01-12-19-45-46tree')
 
 
-    # print_Dif_tree('2020-12-28-18-49-10optnode','五障碍物\\2020-12-24-18-43-03optnode')
 
-    # fit('三障碍物\\2020-12-24-12-14-09point')
+    # print_Dif_tree('2021-01-12-19-26-09rrtoptnode','2021-01-12-19-29-36optnode')
+
+    # fit('2021-01-12-19-45-46point')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
