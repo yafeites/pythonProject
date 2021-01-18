@@ -12,8 +12,9 @@ def printOct(halfLength1, point, vector, ax):
     halfLength=[halfLength1[0]+15,halfLength1[1]+15,halfLength1[2]+15]
     print(vector)
     print(point)
+    print(halfLength)
     pointA = [[point[0], point[1], point[2]] for i in range(8)]
-    print(vector[0][0])
+    # print(vector[0][0])
     pointA[0][0] += halfLength[0] * vector[0][0]
     pointA[0][1] += halfLength[0] * vector[0][1]
     pointA[0][2] += halfLength[0] * vector[0][2]
@@ -93,7 +94,7 @@ def printOct(halfLength1, point, vector, ax):
     pointA[7][0] += - halfLength[2] * vector[2][0]
     pointA[7][1] += - halfLength[2] * vector[2][1]
     pointA[7][2] += - halfLength[2] * vector[2][2]
-    print(pointA)
+    # print(pointA)
 
     printLine(pointA,0,1,ax)
     printLine(pointA,4,1,ax)
@@ -126,7 +127,7 @@ def printObstacle(name):
     for line in file_obj.readlines():
         line = line.rstrip("\n")
         arr = line.split(",")
-        print(arr)
+        # print(arr)
         x.append(float(arr[0]))
         y.append(float(arr[1]))
         z.append(float(arr[2]))
@@ -134,6 +135,7 @@ def printObstacle(name):
     ax.scatter(x, y, z, s=1)
 
     plt.xlim(700, 3200)
+    # plt.xlim(1200, 1500)
     plt.ylim(-1000, 1000)
 
     plt.show()
@@ -223,6 +225,7 @@ def printObstacleObb(name):
     plt.show()
 
 def printObstacleObbByNotZ(name,ax):
+    print(name)
     # arr1 = [[1, 2, 3]]
     # arr2 = [[4, 0, 3]]
     # print(np.dot(np.transpose(arr1) ,arr2))
@@ -268,7 +271,7 @@ def printObstacleObbByNotZ(name,ax):
     avg[1]/=size
     # avg[2]/=size
     arr=numpy.linalg.eig(numpy.cov(np.transpose(pointsNotZ)))
-    print(arr)
+    # print(arr)
     # print(numpy.linalg.eig(numpy.cov(points)))
     maxL=-100000
     maxW=-100000
@@ -286,19 +289,19 @@ def printObstacleObbByNotZ(name,ax):
         minH = min(minH,point[2])
         # print(minL)
     tr=np.transpose(arr[1])
-    print(tr)
+    # print(tr)
     pointA=[(maxL+minL)/2,(maxW+minW)/2,(maxH+minH)/2]
 
     X=np.dot(pointA[:2],np.transpose(tr[0]))
     Y=np.dot(pointA[:2],np.transpose(tr[1]))
     Z=pointA[2]
     pointB=[X,Y,Z]
-    print(X,Y,Z)
+    # print(X,Y,Z)
     arrVector=arr[1]
-    print(arrVector)
+    # print(arrVector)
     halfLengthA=[(maxL-minL)/2,(maxW-minW)/2,(maxH-minH)/2]
     vector=[[arrVector[0][0],arrVector[0][1],0],[arrVector[1][0],arrVector[1][1],0],[0,0,1]]
-    print(vector)
+    # print(vector)
     printOct(halfLengthA, pointB, vector, ax)
 
     ax.scatter(x, y, z, s=1)
@@ -491,12 +494,13 @@ def randomcolor():
 
 if __name__ == '__main__':
     # printDifObstacle('2021-01-07-10-28-55点云分离ground','2021-01-07-10-28-55障碍物')
-    printObstacle("2021-01-11-19-22-30地面点云")
+    printObstacle('2021-01-18-11-03-38处理后地面点云')
     # printObstacleObbByNotZTest("2021-01-07-10-04-36obbA")
 
     # printObstacleObb('2021-01-06-22-11-25点云分离obbE')
-    arr = ["2021-01-07-10-28-55点云分离obbA", "2021-01-07-10-28-55点云分离obbB", "2021-01-07-10-28-55点云分离obbD",
-           "2021-01-07-10-28-55点云分离obbE", "2021-01-07-10-28-55点云分离球体"]
-
+    # arr = ["2021-01-07-10-28-55点云分离obbA", "2021-01-07-10-28-55点云分离obbB", "2021-01-07-10-28-55点云分离obbD",
+    #        "2021-01-07-10-28-55点云分离obbE", "2021-01-07-10-28-55点云分离球体"]
+    # 实验1
+    arr=['2021-01-18-12-04-37点云分离E1obstacle1']
     # printObstacles(arr)
-    # printObstaclesObb(arr)
+    printObstaclesObb(arr)
