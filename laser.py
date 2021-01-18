@@ -119,7 +119,7 @@ def printObstacle(name):
     fig = plt.figure()
     ax = Axes3D(fig)
 
-    file_obj = open("E:\\file\\点云\\" + name + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\点云\\" + name + ".txt", encoding='UTF-8')
 
     x = []
     y = []
@@ -134,9 +134,9 @@ def printObstacle(name):
 
     ax.scatter(x, y, z, s=1)
 
-    plt.xlim(700, 3200)
+    plt.xlim(690, 3550)
     # plt.xlim(1200, 1500)
-    plt.ylim(-1000, 1000)
+    plt.ylim(-1200, 1200)
 
     plt.show()
 
@@ -149,7 +149,7 @@ def printObstacleObb(name):
     fig = plt.figure()
     ax = Axes3D(fig)
 
-    file_obj = open("E:\\file\\点云\\" + name + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\点云\\" + name + ".txt", encoding='UTF-8')
 
     x = []
     y = []
@@ -232,7 +232,7 @@ def printObstacleObbByNotZ(name,ax):
     # print(np.dot(arr1 ,np.transpose(arr2)))
 
 
-    file_obj = open("E:\\file\\点云\\" + name + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\点云\\" + name + ".txt", encoding='UTF-8')
 
     x = []
     y = []
@@ -317,7 +317,7 @@ def printObstacleObbByNotZTest(name):
 
     fig = plt.figure()
     ax = Axes3D(fig)
-    file_obj = open("E:\\file\\点云\\" + name + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\点云\\" + name + ".txt", encoding='UTF-8')
 
     x = []
     y = []
@@ -399,7 +399,7 @@ def printDifObstacle(name1, name2):
     fig = plt.figure()
     ax = Axes3D(fig)
 
-    file_obj = open("E:\\file\\点云\\" + name1 + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\点云\\" + name1 + ".txt", encoding='UTF-8')
     x = []
     y = []
     z = []
@@ -412,7 +412,7 @@ def printDifObstacle(name1, name2):
         z.append(float(arr[2]))
 
     ax.scatter(x, y, z, s=1, c='blue')
-    file_obj = open("E:\\file\\点云\\" + name2 + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\点云\\" + name2 + ".txt", encoding='UTF-8')
     x = []
     y = []
     z = []
@@ -436,7 +436,7 @@ def printObstaclesObb(arr):
     for item in arr:
         printObstacleObbByNotZ(item,ax)
         # c1 = randomcolor()
-        # file_obj = open("E:\\file\\点云\\" + item + ".txt", encoding='UTF-8')
+        # file_obj = open("E:\\graduateDesignTxt\\点云\\" + item + ".txt", encoding='UTF-8')
         # x = []
         # y = []
         # z = []
@@ -450,8 +450,8 @@ def printObstaclesObb(arr):
         #
         # ax.scatter(x, y, z, s=1)
 
-    plt.xlim(1000, 2500)
-    plt.ylim(-1000, 1000)
+    plt.xlim(690, 3550)
+    plt.ylim(-1200, 1200)
     print(plt)
     plt.show()
 def printObstacles(arr):
@@ -459,7 +459,7 @@ def printObstacles(arr):
     ax = Axes3D(fig)
     for item in arr:
         c1 = randomcolor()
-        file_obj = open("E:\\file\\点云\\" + item + ".txt", encoding='UTF-8')
+        file_obj = open("E:\\graduateDesignTxt\\点云\\" + item + ".txt", encoding='UTF-8')
         x = []
         y = []
         z = []
@@ -473,7 +473,7 @@ def printObstacles(arr):
 
         ax.scatter(x, y, z, s=1)
 
-    plt.xlim(1000, 2500)
+    plt.xlim(690, 2500)
     plt.ylim(-1000, 1000)
     print(plt)
     plt.show()
@@ -494,13 +494,19 @@ def randomcolor():
 
 if __name__ == '__main__':
     # printDifObstacle('2021-01-07-10-28-55点云分离ground','2021-01-07-10-28-55障碍物')
-    printObstacle('2021-01-18-11-03-38处理后地面点云')
+    printObstacle('2021-01-18-20-20-07所有点云')
     # printObstacleObbByNotZTest("2021-01-07-10-04-36obbA")
 
     # printObstacleObb('2021-01-06-22-11-25点云分离obbE')
     # arr = ["2021-01-07-10-28-55点云分离obbA", "2021-01-07-10-28-55点云分离obbB", "2021-01-07-10-28-55点云分离obbD",
     #        "2021-01-07-10-28-55点云分离obbE", "2021-01-07-10-28-55点云分离球体"]
     # 实验1
-    arr=['2021-01-18-12-04-37点云分离E1obstacle1']
+    # arr=['2021-01-18-12-04-37点云分离E1obstacle1']
+
+    # 实验2
+    # arr=['2021-01-18-16-09-34点云分离E2obstacle1','2021-01-18-16-09-34点云分离E2obstacle2']
+
+    # 实验3
+    arr=['2021-01-18-18-57-14点云分离E3obstacle1','2021-01-18-18-57-14点云分离E3obstacle2','2021-01-18-18-57-14点云分离E3obstacle3']
     # printObstacles(arr)
-    printObstaclesObb(arr)
+    # printObstaclesObb(arr)

@@ -121,7 +121,7 @@ def print_Dif_tree(name, name1):
     fig = plt.figure()
     ax = Axes3D(fig)
 
-    file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\" + name + ".txt", encoding='UTF-8')
     printObs(ax)
 
     for line in file_obj.readlines():
@@ -139,7 +139,7 @@ def print_Dif_tree(name, name1):
         z = np.linspace(float(s1[2]), float(s2[2]), 2)
         line1, = ax.plot(x, y, z, 'b')
 
-    file_obj = open("E:\\file\\" + name1 + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\" + name1 + ".txt", encoding='UTF-8')
 
     for line in file_obj.readlines():
         if (line.find("树") != -1):
@@ -169,7 +169,7 @@ def print_tree(name):
     fig = plt.figure()
     ax = Axes3D(fig)
 
-    file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\" + name + ".txt", encoding='UTF-8')
     printObs(ax)
 
     for line in file_obj.readlines():
@@ -195,7 +195,7 @@ def print_tree(name):
 def fit(name):
     fig = plt.figure()
     ax = Axes3D(fig)
-    file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\" + name + ".txt", encoding='UTF-8')
     x = []
     y = []
     z = []
@@ -231,13 +231,42 @@ def printObs(ax):
     halfLengthB = [50, 50, 50]
     halfLengthC = [50, 50,50]
     # 实验1
-    vectorE1 = [[0.9999917896676187, 0.004052233625149753, 0], [-0.004052233625149753, 0.9999917896676187, 0], [0, 0, 1]]
-    halfLengthOb1=[168.9698656966724, 85.44732829925721, 129.9982925488161]
-    pointOb1=[ 1878.8424834265804, -0.0043320454585780155, -160.0017074511839]
+    # vectorE1O1 = [[0.9999917896676187, 0.004052233625149753, 0], [-0.004052233625149753, 0.9999917896676187, 0], [0, 0, 1]]
+    # halfLengthOb1=[168.9698656966724, 85.44732829925721, 129.9982925488161]
+    # pointOb1=[ 1878.8424834265804, -0.0043320454585780155, -160.0017074511839]
+    #
+    # printOct(halfLengthOb1, pointOb1, vectorE1O1, ax)
 
-    printOct(halfLengthOb1, pointOb1, vectorE1, ax)
+     # 实验2
+    # vectorE2O1 = [[-0.9999661492160795, 0.008228026614298273, 0], [-0.008228026614298273, -0.9999661492160795, 0],
+    #             [0, 0, 1]]
+    # halfLengthOb1 = [167.10996413595126, 622.8374185878532, 94.96770075139898]
+    # pointOb1 = [1122.2443997948117, 591.8190900456055, 985.0317098103676]
+    # vectorE2O2 = [[0.9999925866549344, 0.0038505369980848334, 0], [-0.0038505369980848334, 0.9999925866549344, 0],
+    #               [0, 0, 1]]
+    # halfLengthOb2 = [170.76005769684195, 140.13471487588748, 76.9951048515216]
+    # pointOb2 = [1880.4613915109232, 0.18929223345776958, -217.0048951484784]
+    # printOct(halfLengthOb1, pointOb1, vectorE2O1, ax)
+    # printOct(halfLengthOb2, pointOb2, vectorE2O2, ax)
+    # 实验3
+    vectorE3O1 = [[0.987467177036046, 0.15782450467675121, 0], [-0.15782450467675121, 0.987467177036046, 0],
+                [0, 0, 1]]
+    halfLengthOb1 = [171.97168355146755, 104.51532823318954, 132.4950160055249]
+    pointOb1 = [1875.167714805176, 0.6627199221402975, -162.5049839944751]
+    vectorE3O2 = [[-0.9999970729800213, 0.002419510568241216, 0], [-0.002419510568241216, -0.9999970729800213, 0],
+                  [0, 0, 1]]
+    halfLengthOb2 = [163.5900775929398, 629.201819753647, 94.35145489411593]
+    pointOb2 = [1642.2829841554785, 599.0209976102934, 330.6484956657735]
+    vectorE3O3 = [[0.9804835073705236, -0.19660135242260204, 0], [0.19660135242260204, 0.9804835073705236, 0],
+                  [0, 0, 1]]
+    halfLengthOb3 = [182.69573873137233, 160.23344321311694, 196.99977976125382]
+    pointOb3 = [1635.929073871934, -350.2882430107377, -87.00022023874618]
+    printOct(halfLengthOb1, pointOb1, vectorE3O1, ax)
+    printOct(halfLengthOb2, pointOb2, vectorE3O2, ax)
+    printOct(halfLengthOb3, pointOb3, vectorE3O3, ax)
 
-    # 实验2
+
+
     # halfLengthOb1=[150,110,55]
     # pointOb1=[1890,0,-220]
     # 实验3
@@ -278,7 +307,7 @@ def printObs(ax):
 def printLength(name):
     fig = plt.figure()
     ax = Axes3D(fig)
-    file_obj = open("E:\\file\\" + name + ".txt", encoding='UTF-8')
+    file_obj = open("E:\\graduateDesignTxt\\" + name + ".txt", encoding='UTF-8')
     printObs(ax)
     dis = 0
     for line in file_obj.readlines():
@@ -297,17 +326,17 @@ def printLength(name):
         # x = np.linspace(float(s1[0]), float(s2[0]), 2)
         # y = np.linspace(float(s1[1]), float(s2[1]), 2)
         # z = np.linspace(float(s1[2]), float(s2[2]), 2)
-        # ax.plot(x, y, z)
+        # ax.plot(x, y, z)0E
     print(dis)
 
 
 
 
 if __name__ == '__main__':
-    # print_tree('2021-01-18-12-32-08optnode')
+    # print_tree('2021-01-18-19-10-10tree')
     # printLength('2021-01-14-17-20-52optnode')
 
 
     # print_Dif_tree('2020-12-28-18-49-10optnode','五障碍物\\2020-12-24-18-43-03optnode')
 
-    fit('2021-01-18-12-32-08point')
+    fit('2021-01-18-19-10-10point')
