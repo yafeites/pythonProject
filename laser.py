@@ -309,6 +309,90 @@ def printObstacleObbByNotZ(name,ax):
     # plt.ylim(-1000, 1000)
     # plt.show()
 
+def printObstacleObbSquare(name,ax):
+    print(name)
+    # arr1 = [[1, 2, 3]]
+    # arr2 = [[4, 0, 3]]
+    # print(np.dot(np.transpose(arr1) ,arr2))
+    # print(np.dot(arr1 ,np.transpose(arr2)))
+
+
+    file_obj = open("E:\\graduateDesignTxt\\点云\\" + name + ".txt", encoding='UTF-8')
+
+    x = []
+    y = []
+    z = []
+    for line in file_obj.readlines():
+        line = line.rstrip("\n")
+        arr = line.split(",")
+        # print(arr)
+        x.append(float(arr[0]))
+        y.append(float(arr[1]))
+        z.append(float(arr[2]))
+    size = len(x)
+    # print(size)
+    points = numpy.zeros((size, 3))
+    pointsNotZ = numpy.zeros((size, 2))
+
+    print(np.transpose(points))
+    # print(points)
+    for i in range(size):
+        points[i][0] = x[i]
+        points[i][1] = y[i]
+        points[i][2] = z[i]
+        # print(points[i])
+        pointsNotZ[i][0] = x[i]
+        pointsNotZ[i][1] = y[i]
+    avg = np.array([0,0])
+    # print(avg)
+    # avg[0] = 0
+    # avg[1] = 0
+    # avg[2] = 0
+    for i in range(size):
+        avg[0] += x[i]
+        avg[1] += y[i]
+        # avg[2] += z[i]
+    avg[0]/=size
+    avg[1]/=size
+    # avg[2]/=size
+    arr=numpy.linalg.eig(numpy.cov(np.transpose(pointsNotZ)))
+    # print(arr)
+    # print(numpy.linalg.eig(numpy.cov(points)))
+    maxL=-100000
+    maxW=-100000
+    maxH=-100000
+    minL = 100000
+    minW = 100000
+    minH = 100000
+
+    for point in points:
+        maxL=max(maxL,np.dot(point[:2],np.transpose(arr[1][0])))
+        minL=min(minL,np.dot(point[:2],np.transpose(arr[1][0])))
+        maxW = max(maxW,np.dot(point[:2], np.transpose(arr[1][1])))
+        minW = min(minW,np.dot(point[:2], np.transpose(arr[1][1])))
+        maxH = max(maxH,point[2])
+        minH = min(minH,point[2])
+        # print(minL)
+    tr=np.transpose(arr[1])
+    # print(tr)
+    pointA=[(maxL+minL)/2,(maxW+minW)/2,(maxH+minH)/2]
+
+    X=np.dot(pointA[:2],np.transpose(tr[0]))
+    Y=np.dot(pointA[:2],np.transpose(tr[1]))
+    Z=pointA[2]
+    pointB=[X,Y,Z]
+    # print(X,Y,Z)
+    arrVector=arr[1]
+    # print(arrVector)
+    halfLengthA=[(maxL-minL)/2,(maxW-minW)/2,(maxH-minH)/2]
+    vector=[[arrVector[0][0],arrVector[0][1],0],[arrVector[1][0],arrVector[1][1],0],[0,0,1]]
+    # print(vector)
+    printOct(halfLengthA, pointB, vector, ax)
+
+    ax.scatter(x, y, z, s=1)
+    # plt.xlim(1000, 2500)
+    # plt.ylim(-1000, 1000)
+    # plt.show()
 def printObstacleObbByNotZTest(name):
     # arr1 = [[1, 2, 3]]
     # arr2 = [[4, 0, 3]]
@@ -454,6 +538,31 @@ def printObstaclesObb(arr):
     plt.ylim(-1200, 1200)
     print(plt)
     plt.show()
+
+    def printObstaclessquare(arr):
+        fig = plt.figure()
+        ax = Axes3D(fig)
+        for item in arr:
+            printObstacleObbByNotZ(item, ax)
+            # c1 = randomcolor()
+            # file_obj = open("E:\\graduateDesignTxt\\点云\\" + item + ".txt", encoding='UTF-8')
+            # x = []
+            # y = []
+            # z = []
+            # for line in file_obj.readlines():
+            #     line = line.rstrip("\n")
+            #     arr = line.split(",")
+            #     print(arr)
+            #     x.append(float(arr[0]))
+            #     y.append(float(arr[1]))
+            #     z.append(float(arr[2]))
+            #
+            # ax.scatter(x, y, z, s=1)
+
+        plt.xlim(690, 3550)
+        plt.ylim(-1200, 1200)
+        print(plt)
+        plt.show()
 def printObstacles(arr):
     fig = plt.figure()
     ax = Axes3D(fig)
@@ -494,7 +603,7 @@ def randomcolor():
 
 if __name__ == '__main__':
     # printDifObstacle('2021-01-18-20-09-05处理后地面点云','2021-01-18-22-11-55障碍物')
-    # printObstacle('2021-01-19-16-28-50所有点云')
+    printObstacle('2021-01-21-16-46-07过滤随机剩下障碍物')
     # printObstacleObbByNotZTest("2021-01-07-10-04-36obbA")
 
     # printObstacleObb('2021-01-06-22-11-25点云分离obbE')
@@ -525,5 +634,12 @@ if __name__ == '__main__':
     arr = ['2021-01-19-16-35-25点云分离Elobstacle1', '2021-01-19-16-35-25点云分离Elobstacle2',
            '2021-01-19-16-35-25点云分离Elobstacle3', '2021-01-19-16-35-25点云分离Elobstacle4',
            '2021-01-19-16-35-25点云分离El球体']
-    # printObstacles(arr)
-    printObstaclesObb(arr)
+    # 欧式聚类
+    arr=['2021-01-21-15-11-43欧式聚类0','2021-01-21-15-11-43欧式聚类1','2021-01-21-15-11-44欧式聚类2'
+         ,'2021-01-21-15-11-44欧式聚类3','2021-01-21-15-11-44欧式聚类4','2021-01-21-15-11-49欧式聚类5','2021-01-21-15-11-49欧式聚类6']
+
+    arr=['2021-01-21-16-13-47欧式聚类0','2021-01-21-16-13-47欧式聚类1','2021-01-21-16-13-47欧式聚类2','2021-01-21-16-13-47欧式聚类3','2021-01-21-16-13-47欧式聚类4','2021-01-21-16-13-47欧式聚类5'];
+    arr=['2021-01-21-16-28-17欧式聚类0']
+    printObstacles(arr)
+
+    # printObstaclesObb(arr)
