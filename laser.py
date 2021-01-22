@@ -5,7 +5,7 @@ import numpy
 from matplotlib.patches import Circle
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as  np
-from vpython import *
+
 from scipy import interpolate
 import math
 
@@ -15,6 +15,7 @@ def printOct(halfLength1, point, vector, ax):
     print(vector)
     print(point)
     print(halfLength)
+    print(8 * halfLength[0] * halfLength[1] * halfLength[2])
     pointA = [[point[0], point[1], point[2]] for i in range(8)]
     # print(vector[0][0])
     pointA[0][0] += halfLength[0] * vector[0][0]
@@ -356,13 +357,17 @@ def printObstacleObbSphere(name, ax):
     halfLengthA = [(maxL - minL) / 2, (maxW - minW) / 2, (maxH - minH) / 2]
     # vector = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
     # printOct(halfLengthA, pointA, vector, ax)
-    r = max((maxL - minL) / 2, max((maxH - minH) / 2, (maxW - minW) / 2))
+    r = 0
+    for point in points:
+        r = max(r,
+                math.sqrt(pow(pointA[0] - point[0], 2) + pow(pointA[1] - point[1], 2) + pow(pointA[2] - point[2], 2)))
+
     # s = sphere(pos=(pointA))
     # s.radius=r
     # ax.plot(s)
     center = pointA
     radius = r
-
+    print(2 * 3.14 * r * r)
     # data
     u = np.linspace(0, 2 * np.pi, 100)
     v = np.linspace(0, np.pi, 100)
@@ -668,7 +673,7 @@ def randomcolor():
 
 if __name__ == '__main__':
     # printDifObstacle('2021-01-18-20-09-05处理后地面点云','2021-01-18-22-11-55障碍物')
-    printObstacle('2021-01-21-16-46-07过滤随机剩下障碍物')
+    printObstacle('2021-01-21-16-46-06所有点云')
     # printObstacleObbByNotZTest("2021-01-07-10-04-36obbA")
 
     # printObstacleObb('2021-01-06-22-11-25点云分离obbE')
@@ -700,15 +705,28 @@ if __name__ == '__main__':
     arr = ['2021-01-19-16-35-25点云分离Elobstacle1', '2021-01-19-16-35-25点云分离Elobstacle2',
            '2021-01-19-16-35-25点云分离Elobstacle3', '2021-01-19-16-35-25点云分离Elobstacle4',
            '2021-01-19-16-35-25点云分离El球体']
-    # printObstaclesSquare(arr)
-    printObstaclesSphere(arr)
+
     # 欧式聚类
     arr = ['2021-01-21-15-11-43欧式聚类0', '2021-01-21-15-11-43欧式聚类1', '2021-01-21-15-11-44欧式聚类2'
         , '2021-01-21-15-11-44欧式聚类3', '2021-01-21-15-11-44欧式聚类4', '2021-01-21-15-11-49欧式聚类5',
            '2021-01-21-15-11-49欧式聚类6']
 
-    arr = ['2021-01-21-16-13-47欧式聚类0', '2021-01-21-16-13-47欧式聚类1', '2021-01-21-16-13-47欧式聚类2',
-           '2021-01-21-16-13-47欧式聚类3', '2021-01-21-16-13-47欧式聚类4', '2021-01-21-16-13-47欧式聚类5'];
-    arr = ['2021-01-21-16-28-17欧式聚类0']
-    printObstacles(arr)
-    printObstaclesObb(arr)
+    # arr = ['2021-01-22-10-51-51欧式聚类0', '2021-01-22-10-51-51欧式聚类1', '2021-01-22-10-51-51欧式聚类2',
+    # 30+15
+    # arr = ['2021-01-22-11-23-40欧式聚类0', '2021-01-22-11-23-40欧式聚类1', '2021-01-22-11-23-40欧式聚类2',
+    #        '2021-01-22-11-23-40欧式聚类3',
+    #        '2021-01-22-11-23-40欧式聚类4', '2021-01-22-11-23-40欧式聚类5']
+    # # 40+15
+    arr = ['2021-01-22-11-27-08欧式聚类0', '2021-01-22-11-27-08欧式聚类1', '2021-01-22-11-27-08欧式聚类2',
+           '2021-01-22-11-27-08欧式聚类3', '2021-01-22-11-27-08欧式聚类4', '2021-01-22-11-27-08欧式聚类5']
+    # 40 + 10
+    # arr=['2021-01-22-11-30-45欧式聚类0','2021-01-22-11-30-45欧式聚类1','2021-01-22-11-30-45欧式聚类2','2021-01-22-11-30-45欧式聚类3'
+    # ,'2021-01-22-11-30-45欧式聚类4','2021-01-22-11-30-45欧式聚类5','2021-01-22-11-30-45欧式聚类6']
+
+    # arr = ['2021-01-22-10-54-23欧式聚类5']
+    # printObstacles(arr)
+arr = ['2021-01-22-11-27-08欧式聚类0', '2021-01-22-11-27-08欧式聚类1', '2021-01-22-11-27-08欧式聚类2',
+       '2021-01-22-11-27-08欧式聚类3', '2021-01-22-11-27-08欧式聚类4']
+printObstaclesSquare(arr)
+printObstaclesSphere(arr)
+printObstaclesObb(arr)
