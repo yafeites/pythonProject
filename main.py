@@ -262,9 +262,9 @@ def printObs(ax):
                   [0, 0, 1]]
     halfLengthOb3 = [182.69573873137233, 160.23344321311694, 196.99977976125382]
     pointOb3 = [1635.929073871934, -350.2882430107377, -87.00022023874618]
-    printOct(halfLengthOb1, pointOb1, vectorE3O1, ax)
-    printOct(halfLengthOb2, pointOb2, vectorE3O2, ax)
-    printOct(halfLengthOb3, pointOb3, vectorE3O3, ax)
+    # printOct(halfLengthOb1, pointOb1, vectorE3O1, ax)
+    # printOct(halfLengthOb2, pointOb2, vectorE3O2, ax)
+    # printOct(halfLengthOb3, pointOb3, vectorE3O3, ax)
 
 
 
@@ -292,6 +292,8 @@ def printObs(ax):
     pointC = [1700.0, -50, 65.0]
     pointD = [1500.0, 0.0, 65.0]
     pointE = [850, 0, 800]
+    pointF= [1750.0,-400.0,200.0]
+    pointG=[2000.0,-300.0,0.0 ]
     vector = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
     # printOct(halfLengthA, pointObA, vector, ax)
     # printOct(halfLengthA, pointObB, vector, ax)
@@ -299,11 +301,14 @@ def printObs(ax):
 
 
 
-    # printOct(halfLengthA, pointA, vector, ax)
-    # printOct(halfLengthB, pointB, vector, ax)
-    # printOct(halfLengthC, pointC, vector, ax)
-    # printOct(halfLengthC, pointD, vector, ax)
-    # printOct(halfLengthC, pointE, vector, ax)
+    printOct(halfLengthA, pointA, vector, ax)
+    printOct(halfLengthB, pointB, vector, ax)
+    printOct(halfLengthC, pointC, vector, ax)
+    printOct(halfLengthC, pointD, vector, ax)
+    printOct(halfLengthC, pointE, vector, ax)
+    printOct(halfLengthC, pointF, vector, ax)
+    printOct(halfLengthC, pointG, vector, ax)
+
 
 
 # Press the green button in the gutter to run the script.
