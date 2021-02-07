@@ -666,7 +666,6 @@ def printObstacles(arr):
     plt.show()
 
 
-
 def randomcolor():
     colorArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
     colorArr = ['000000', '0000FF', '00008B', '808080', 'FF0000']
@@ -681,8 +680,8 @@ def randomcolor():
 
 
 if __name__ == '__main__':
-    # printDifObstacle('2021-01-18-20-09-05处理后地面点云','2021-01-18-22-11-55障碍物')
-    printObstacle('2021-01-21-16-46-06所有点云')
+    printDifObstacle('20210127 114718地面点', '20210127 114718分离地面')
+    # printObstacle('2021-01-27-11-41-01所有点云')
     # printObstacleObbByNotZTest("2021-01-07-10-04-36obbA")
 
     # printObstacleObb('2021-01-06-22-11-25点云分离obbE')
