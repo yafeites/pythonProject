@@ -306,9 +306,9 @@ def printObs(ax):
     # printOct(halfLengthC, pointF, vector, ax)
     # printOct(halfLengthC, pointG, vector, ax)
     # 仿真实验1
-    point1=[1890,0,-170]
-    halfLength1=[150,50,110]
-    printOct(halfLength1, point1, vector, ax)
+    # point1=[1890,0,-170]
+    # halfLength1=[150,50,110]
+    # printOct(halfLength1, point1, vector, ax)
     # 仿真实验2
     # point1 = [1130, 600, 980]
     # halfLength1 = [140, 600, 60]
@@ -326,6 +326,19 @@ def printObs(ax):
     # printOct(halfLength1, point1, vector, ax)
     # printOct(halfLength2, point2, vector, ax)
     # printOct(halfLength3, point3, vector, ax)
+    # 实验4
+    point1 = [1130, 600, 1050]
+    halfLength1 = [65, 600, 65]
+    point2 = [1890,0,-220]
+    halfLength2 = [150,110,50]
+    point3 = [1800, -600, 200]
+    halfLength3 = [65, 600, 65]
+    point4 = [2000.0,-250,-90]
+    halfLength4 = [150,100,170]
+    printOct(halfLength1, point1, vector, ax)
+    printOct(halfLength2, point2, vector, ax)
+    printOct(halfLength3, point3, vector, ax)
+    printOct(halfLength4, point4, vector, ax)
 
 
 # Press the green button in the gutter to run the script.
@@ -356,9 +369,9 @@ def printLength(name):
 
 
 if __name__ == '__main__':
-    print_tree('2021-02-08-17-17-28optnode')
-    # printLength('2021-02-08-18-00-20optnode')
+    # print_tree('2021-02-25-21-26-43optnode')
+    # printLength('2021-02-25-21-26-43node')
 
     # print_Dif_tree('2020-12-28-18-49-10optnode','五障碍物\\2020-12-24-18-43-03optnode')
 
-    # fit('2021-02-08-18-00-20point')
+    fit('2021-02-25-21-26-43point')
